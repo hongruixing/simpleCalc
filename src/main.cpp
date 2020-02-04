@@ -5,11 +5,13 @@
 extern bool parse_str (const std::string& expression, int& ans);
 
 int main (int argc, char* argv[]) {
-    std::cout << "Welcome to Simple Calculator!\n" << std::endl;
+    std::cout << "Welcome to Simple Calculator!" << std::endl;
+    std::cout << "> Type 'quit' to stop the program\n" << std::endl;
     
     std::string exp;
     int ans;
     while (true) {
+        std::cout << "> ";
         std::getline(std::cin, exp);
         if (exp == "quit") {
             break;

@@ -23,7 +23,6 @@ void yyerror (int* result, const char* s) {
 %left ADD SUB
 %left MUL DIV
 %token ABS LPARAN RPARAN LCBRACKET RCBRACKET LSBRACKET RSBRACKET
-%token EOL
 %token END 0
 %%
 
