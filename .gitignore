@@ -1,0 +1,11 @@
+# Text editor
+.vs/
+.vscode/
+
+# Generated parser
+parser/
+
+# Build
+out/
+build/
+cmake-build/
