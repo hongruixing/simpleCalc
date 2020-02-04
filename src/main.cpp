@@ -3,6 +3,8 @@
 
 int main (int argc, char* argv[]) {
     std::cout << "Welcome to Simple Calculator!\n" << std::endl;
-    yyparse();
+    int res;
+    yyparse(&res);
+    printf("Result: %d\n", res);
     return 0;
 }
