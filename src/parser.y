@@ -5,9 +5,12 @@
 %parse-param {int* result}
 
 %{
+typedef struct yy_buffer_state * YY_BUFFER_STATE;
 #define yyterminate() return END
 
 extern int yylex (void);
+extern YY_BUFFER_STATE yy_scan_string(const char * str);
+extern void yy_delete_buffer(YY_BUFFER_STATE buffer);
 
 int yyparse (int* result);
 void yyerror (int* result, const char* s) {
@@ -24,8 +27,8 @@ void yyerror (int* result, const char* s) {
 %token END 0
 %%
 
-program: EOL { *result = 0; yyterminate(); }
-| exp EOL { *result = $1; yyterminate(); }
+program:
+|   exp { *result = $1; yyterminate(); }
 ;
 
 exp: NUMBER
@@ -42,3 +45,11 @@ exp: NUMBER
 ;
 
 %%
+
+bool parse_str (const std::string& expression, int& ans) {
+    YY_BUFFER_STATE buffer = yy_scan_string(expression.c_str());
+    int err = yyparse(&ans);
+    yy_delete_buffer(buffer);
+
+    return err == 0;
+}

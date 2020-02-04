@@ -22,7 +22,6 @@
 "["     { return LSBRACKET; }
 "]"     { return RSBRACKET; }
 
-\n      { return EOL; }
-[ \t]   { /* Ignore white space */ }
+[ \r\t\n]   { /* Ignore white space */ }
 .       { std::cout << "Mystery character: " << *yytext << std::endl; }
 %%
